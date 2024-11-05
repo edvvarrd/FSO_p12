@@ -1,0 +1,5 @@
+docker container run -it ubuntu bash
+root@13faca99db58:/# mkdir /usr/src/app
+root@13faca99db58:/# cd usr/src/app
+root@13faca99db58:/usr/src/app# touch index.js
+root@13faca99db58:/usr/src/app# exit

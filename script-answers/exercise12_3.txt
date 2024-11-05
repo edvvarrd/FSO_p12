@@ -1,0 +1,5 @@
+docker ps -a
+docker start -i reverent_mcnulty
+root@b8548b9faec3:/# apt update && apt install -y nano
+root@b8548b9faec3:/# nano usr/src/app/index.js
+root@b8548b9faec3:/# exit
