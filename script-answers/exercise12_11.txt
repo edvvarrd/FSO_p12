@@ -1,0 +1,6 @@
+docker exec -it todo-backend-redis-1 bash
+root@aac7af2022c1:/data# redis-cli
+127.0.0.1:6379> KEYS *
+127.0.0.1:6379> GET added_todos
+127.0.0.1:6379> SET added_todos 9001
+127.0.0.1:6379> DEL added_todos
