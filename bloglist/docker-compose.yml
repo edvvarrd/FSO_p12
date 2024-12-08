@@ -1,0 +1,32 @@
+services:
+    client:
+        image: bloglist_frontend:latest
+        build:
+            context: ./bloglist_frontend
+            dockerfile: Dockerfile
+        environment:
+            VITE_BACKEND_URL: http://localhost:8080/api
+        volumes:
+            - ./bloglist_frontend:/usr/src/app
+            - /usr/src/app/node_modules
+    server:
+        image: bloglist_backend:latest
+        build:
+            context: ./bloglist_backend
+            dockerfile: Dockerfile
+        environment:
+            TEST_MONGODB_URL: test-mongo-url
+            MONGODB_URL: mongo-url
+            PORT: 3000
+            SECRET: 'secret'
+        volumes:
+            - ./bloglist_backend:/usr/src/app
+    nginx:
+        image: nginx:1.20.1
+        ports:
+            - 8080:80
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+        depends_on:
+            - client
+            - server
